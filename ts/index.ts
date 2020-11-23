@@ -1,16 +1,14 @@
-class User {
-  public age: number;
-  public familyName: string;
-  public givenName: string;
-  constructor(familyName: string, givenName: string, age: number) {
-    this.age = age;
-    this.familyName = familyName;
-    this.givenName = givenName;
-  }
-}
+import UUID from 'uuid';
+import { User } from "./User";
 
-const user = new User('ごんざ', 'きよし', 24);
+const user = new User('ごんざ', 'きよし', 44);
+
 const contentsElem = document.getElementById('contents');
-if (!!contentsElem) {
-  contentsElem.innerText = `${user.familyName} ${user.givenName}`
+if(!!contentsElem) {
+    contentsElem.innerText = `${user.familyName} ${user.givenName}`;
+}
+const submitButton = document.getElementById('submit') as HTMLButtonElement;
+const uuidSpan = document.getElementById('uuid') as HTMLSpanElement;
+submitButton.onclick = (e) => {
+  uuidSpan.innerText = UUID.v4();
 }
